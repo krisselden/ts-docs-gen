@@ -12,6 +12,6 @@ export class ApiMethod extends ApiCallable<Contracts.ApiMethodDto> {
     }
 
     public ToHeadingText(): string {
-        return this.Name;
+        return `${this.Name}${this.CallableToSimpleString()}`;
     }
 }

@@ -19,6 +19,6 @@ export class ApiConstruct extends ApiCallable<Contracts.ApiConstructDto> {
     }
 
     public ToHeadingText(): string {
-        return this.Name;
+        return `new ${this.CallableToSimpleString()}`;
     }
 }

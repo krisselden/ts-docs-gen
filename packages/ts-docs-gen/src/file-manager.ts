@@ -11,6 +11,7 @@ import { ApiContainer, ContainerMembersKindsGroup } from "./abstractions/contain
 import { ApiClassPlugin } from "./plugins/api-class-plugin";
 import { ApiSourceFilePlugin } from "./plugins/api-source-file-plugin";
 import { ApiNamespacePlugin } from "./plugins/api-namespace-plugin";
+import { ApiInterfacePlugin } from "./plugins/api-interface-plugin";
 
 // TODO: remove unused files before generating docs.
 export class FileManager {
@@ -29,6 +30,9 @@ export class FileManager {
         switch (apiItemKind) {
             case Contracts.ApiDefinitionKind.Class: {
                 return ApiClassPlugin.MemberKindsList;
+            }
+            case Contracts.ApiDefinitionKind.Interface: {
+                return ApiInterfacePlugin.MemberKindsList;
             }
             case Contracts.ApiDefinitionKind.Namespace: {
                 return ApiNamespacePlugin.MemberKindsList;

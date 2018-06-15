@@ -43,13 +43,24 @@ export class ApiCallablePlugin extends FunctionLikePlugin<CallableApiItem> {
     public Render(options: PluginOptions, apiItem: CallableApiItem): PluginResult<CallableApiItem> {
         const serializedApiItem = this.resolveSerializedApiItem(options.ExtractedData, apiItem, options.Reference);
 
+        const heading = serializedApiItem.ToHeadingText();
         const pluginResult: PluginResult<CallableApiItem> = {
             ...GeneratorHelpers.GetDefaultPluginResultData(),
             ApiItem: apiItem,
-            Reference: options.Reference
+            Reference: options.Reference,
+            Headings: [
+                {
+                    Heading: heading,
+                    ApiItemId: options.Reference.Id
+                }
+            ],
+            UsedReferences: [options.Reference.Id]
         };
 
         pluginResult.Result = new MarkdownBuilder()
+            .Header(heading, 5)
+            .EmptyLine()
+            .Text(this.RenderApiItemMetadata(apiItem))
             .Code(serializedApiItem.ToInlineText(), GeneratorHelpers.DEFAULT_CODE_OPTIONS)
             .GetOutput();
 

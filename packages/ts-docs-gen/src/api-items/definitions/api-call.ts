@@ -10,6 +10,6 @@ export class ApiCall extends ApiCallable<Contracts.ApiCallDto> {
     }
 
     public ToHeadingText(): string {
-        return this.Name;
+        return `${this.CallableToSimpleString()}`;
     }
 }

@@ -10,6 +10,6 @@ export class ApiFunction extends ApiCallable<Contracts.ApiFunctionDto> {
     }
 
     public ToHeadingText(): string {
-        return this.Name;
+        return `${this.Name}${this.CallableToSimpleString()}`;
     }
 }

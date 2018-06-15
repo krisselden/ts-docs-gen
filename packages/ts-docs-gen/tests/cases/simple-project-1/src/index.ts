@@ -125,11 +125,22 @@ export interface InterfaceWithCall {
 }
 
 export interface InterfaceWithConstraintType extends Dictionary<string> {
+    /**
+     * Just some property
+     */
     someProperty: string;
 }
 
 export interface InterfaceWithMethod<T> {
+    /**
+     * Some method one
+     * @returns something
+     */
     someMethodOne(): T;
+    /**
+     * Some method two
+     * @returns another something
+     */
     someMethodTwo<TReturn>(): TReturn;
 }
 
@@ -139,7 +150,15 @@ export interface Dictionary<TValue> {
 }
 
 export interface MethodsInterface {
+    /**
+     * Just some method
+     * @returns just a string
+     */
     someMethod<T>(): string;
+    /**
+     * The function itself
+     * @param arg the argument
+     */
     <TValue>(arg: TValue): void;
 }
 
@@ -163,7 +182,17 @@ export interface MonsterInterface<TValue extends Object = {}> extends ObjectsInt
 }
 
 export interface SomeInterface {
+    /**
+     * Index by string
+     * @param key a string key
+     * @returns a string or number
+     */
     [key: string]: string | number;
+    /**
+     * Index by number
+     * @param key an index
+     * @returns a string or number
+     */
     [key: number]: string;
 }
 
